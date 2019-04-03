@@ -273,6 +273,18 @@ class WebBottomSheetDialogFragment : MixinBottomSheetDialogFragment() {
         bottomSheet.show()
     }
 
+    override fun onPause() {
+        contentView.chat_web_view.onPause()
+        contentView.chat_web_view.pauseTimers()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        contentView.chat_web_view.onResume()
+        contentView.chat_web_view.resumeTimers()
+        super.onResume()
+    }
+
     @SuppressLint("CheckResult")
     private fun saveImageFromUrl(url: String?) {
         if (!isAdded) return
